@@ -19,18 +19,18 @@ const exploreCardFull = () => {
   return (
 
 
-    <div className='main'>
+    <div className='CF_main'>
         <button className="button1">Back to explore</button>
-     <div className='aCard'>
-     <div className='left'>
-     <div className='Clogo '>
-     <img className="Alogo " src="collaboration.jpg" height="100px" width="100px" alt='clogo'/></div>
-     <div className='cname'>Yasmini Private Limited</div>
+     <div className='CF_aCard'>
+     <div className='CF_left'>
+     <div className='CF_Clogo '>
+     <img className="CF_CF_Alogo " src="collaboration.jpg" height="100px" width="100px" alt='clogo'/></div>
+     <div className='CF_cname'>Yasmini Private Limited</div>
 
      <div className="listOfSymbol">                                                     
         <div className='onesymbol'>
-            <div> <FontAwesomeIcon icon={faLocationDot}  height="45px" width="45px" className=" Alogo " />
-            {/* <img className="Alogo " src="collaboration.jpg" height="45px" width="45px" alt='comlogo'/> */}
+            <div> <FontAwesomeIcon icon={faLocationDot}  height="45px" width="45px" className=" CF_CF_Alogo " />
+            {/* <img className="CF_Alogo " src="collaboration.jpg" height="45px" width="45px" alt='comlogo'/> */}
             </div>
             <div>
                 <div className="sTitle">location</div>
@@ -39,7 +39,7 @@ const exploreCardFull = () => {
         </div>
         <div className='onesymbol'>
             <div>
-            <FontAwesomeIcon icon={faClock}  height="45px" width="45px" className=" Alogo " />
+            <FontAwesomeIcon icon={faClock}  height="45px" width="45px" className=" CF_Alogo " />
             </div>
             <div>
                 <div className="sTitle">time</div>
@@ -48,7 +48,7 @@ const exploreCardFull = () => {
         </div>
         <div className='onesymbol'>
             <div>
-            <FontAwesomeIcon icon={faBriefcase}  height="45px" width="45px" className=" Alogo " />
+            <FontAwesomeIcon icon={faBriefcase}  height="45px" width="45px" className=" CF_Alogo " />
             </div>
             <div>
                 <div className="sTitle">position</div>
@@ -56,8 +56,8 @@ const exploreCardFull = () => {
             </div>
         </div>
         <div className='onesymbol'>
-            <div className=" Alogo " > 
-                <FontAwesomeIcon icon={faCoins} size="6xs" className=" Alogo " />
+            <div className=" CF_Alogo " > 
+                <FontAwesomeIcon icon={faCoins} size="6xs" className=" CF_Alogo " />
             </div>
             <div>
                 <div className="sTitle">salary</div>

@@ -8,13 +8,13 @@ const inter = Inter({ subsets: ['latin'] })
 export default function DashboardLayout({ children }) {
   return (
     <section className='flex'>
-      <div>
+      <div className='w-50 '>
 
       <Sidebar />
       </div>
-      <div className="wrapper 
+      <div className="wrapper flex-1 
       
-     flex-1 mx-4 flex flex-col 
+    mx-4 flex flex-col 
 
       min-vh-100 bg-light">
 
