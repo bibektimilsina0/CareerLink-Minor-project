@@ -96,7 +96,7 @@ const StudentProfile = () => {
 
           {/* </div> */}
 
-          <div className="mt-4">
+          <div className="mt-4 mb-2 ">
             <p>
               <strong>Certificates:</strong>
             </p>
@@ -106,7 +106,7 @@ const StudentProfile = () => {
                   key={index}
                   src={certificate?.secure_url}
                   alt={`Certificate ${index + 1}`}
-                  className="w-80 h-80 rounded mr-2 mt-2"
+                  className="w-80 h-80 rounded mr-2 mt-2 bg-red-600"
                 />
               ))}
           </div>
@@ -122,7 +122,7 @@ const StudentProfile = () => {
                   /\.pdf$/,
                   ".jpg"
                 )}
-                style={{ border: "none", height: "300px", width: "200px" }}
+                style={{ border: "none", height: "300px", width: "200px",backgroundColor: "red" }}
               />
             </div>
           )}

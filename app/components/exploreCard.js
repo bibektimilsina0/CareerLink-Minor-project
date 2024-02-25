@@ -28,8 +28,8 @@ const exploreCard = ({ internship }) => {
     <div className='internship-card'>
     <div className="top">
         <div className="internship-position"><p>
-          {/* {internship.position} */}
-          Software Developer
+          {internship.position}
+          {/* Software Developer */}
           </p></div>
         <div className="internship-name"><p>
           {/* {internship.company} */}
@@ -38,8 +38,8 @@ const exploreCard = ({ internship }) => {
         <div className="internship-location">
           {/* <GoLocation className='hiring-icon'/>  */}
         <p>
-          {/* {internship.location} */}
-         Pokhara
+          {internship.location}
+         {/* Pokhara */}
           </p>
           </div>
           <div className="listOfSymbol">                                                     
@@ -109,8 +109,8 @@ const exploreCard = ({ internship }) => {
               </p>
         </div> */}
         <div className="internship-qualification">
-            <p>Required Qualifications : </p>
-            <p>
+            <p className='mx-[700px] text-lg font-semibold'>Required Qualifications : </p>
+            <p >
               {/* {internship.qualifications} */}
               {internship.requirements}
               </p>
@@ -133,8 +133,8 @@ const exploreCard = ({ internship }) => {
         <div className="right">
         <div className="internship-btn">
             <div className="internship-bookmark " onClick={() => bookmark()}>
-                <div>
-                {' '}view detail
+                <div className=''>
+                {' '}View detail
                 {/* {isBookmarked ? (
                     <>
                     <BsBookmarkFill className="internship-icon bookmark-icon" />{' '}
