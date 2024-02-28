@@ -100,32 +100,38 @@ const StudentProfile = () => {
             <p>
               <strong>Certificates:</strong>
             </p>
+            <div className="flex justify-center items-center">
             {profileData.certificates &&
               profileData.certificates.map((certificate, index) => (
                 <img
                   key={index}
                   src={certificate?.secure_url}
                   alt={`Certificate ${index + 1}`}
-                  className="w-80 h-80 rounded mr-2 mt-2 bg-red-600"
+                  className=" flex-1 max-w-96  h-96 rounded mr-2 mt-2 bg-red-600 "
                 />
               ))}
+              </div>
           </div>
-
+          <div className="border my-8"></div>
           {profileData.cv && (
             <div>
               <p>
                 <strong>Cv:</strong>
               </p>
+              <div className="flex justify-center items-center">
               <img
                 title="CV"
                 src={(profileData?.cv?.secure_url || "").replace(
                   /\.pdf$/,
                   ".jpg"
                 )}
-                style={{ border: "none", height: "300px", width: "200px",backgroundColor: "red" }}
+                style={{ border: "none", height: "500px", width: "500px",backgroundColor: "red"  }}
               />
+              </div>
             </div>
           )}
+
+
         </div>
       ) : (
         <p>Loading profile data...</p>
