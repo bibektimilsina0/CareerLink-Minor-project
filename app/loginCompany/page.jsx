@@ -25,11 +25,11 @@ console.log(email,password)
         console.log("Response:", data);
        ToastMessage("Success", data.msg); 
         router.push('/dashboard')
-        router.revalidate()
+        router.refresh()
     }
     else{
       const data = await response.json();
-      window.alert(data)
+      ToastMessage("Error",data.msg)
     }
      
       
