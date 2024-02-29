@@ -87,19 +87,17 @@
 
 // export default exploreCard
 
+
 "use client"
-
-import React from 'react'
-import './styles/exploreCard.css';
-
-
+import React, { useEffect } from 'react'
+import './styles/exploreCard.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faFacebook,  faInstagram, faLinkedin , faSearchengin,faFigma} from "@fortawesome/free-brands-svg-icons";
-import { faCoins, faEnvelope, faFilter, faSearch, fas,faLocationDot , faClock, faBriefcase} from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faFontAwesome, faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
-library.add(fas, faTwitter, faFontAwesome, faFilter,faSearch,faLocationDot,faCoins,faBriefcase)
-
+import { faFacebook, faInstagram, faLinkedin, faSearchengin, faFigma } from "@fortawesome/free-brands-svg-icons";
+import { faCoins, faEnvelope, faFilter, faSearch, fas, faLocationDot, faClock, faBriefcase,faUser } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faFontAwesome, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faTwitter, faFontAwesome, faFilter, faSearch, faLocationDot, faCoins, faBriefcase)
+import { useRouter } from 'next/navigation';
 
 
 {/* <FontAwesomeIcon  icon={faFilter}  className="  nine h-12 p-2  "/ >*/ }
@@ -108,8 +106,18 @@ import { InternshipContext } from '../context/internshipcontext';
 
 
 const exploreCard = ({ internship }) => {
-  // console.log(internship)
-  const { applyforInternship, internshipApplyStatus } = useContext(InternshipContext)
+
+  const router=useRouter()
+  const { applyforInternship, internshipApplyStatus, setInternshipApplyStatus } = useContext(InternshipContext)
+  useEffect(() => {
+    if (internshipApplyStatus) {
+      const timeoutId = setTimeout(() => {
+        setInternshipApplyStatus(null);
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [internshipApplyStatus]);
 
   return (
 
@@ -220,28 +228,20 @@ const exploreCard = ({ internship }) => {
         </div>
         <div className="right">
         <div className="internship-btn">
-            <div className="internship-bookmark " onClick={() => bookmark()}>
-                <div className=''>
-                {' '}View detail
-                {/* {isBookmarked ? (
-                    <>
-                    <BsBookmarkFill className="internship-icon bookmark-icon" />{' '}
-                    </>
-                ) : (
-                    <>
-                    <BsBookmark className="internship-icon bookmark-icon" />{' '}
-                    </>
-                )} */}
-                {' '}
-                </div>
-                <p>
-                  {/* {isBookmarked ? 'Bookmarked' : 'Bookmark'} */}
-                  </p>
-            </div>
+
+        <div className="internship-bookmark " onClick={()=>{
+         
+         router.push(`/explore/${internship._id}`)
+       }}>
+         View More
+       </div>
+
+
             <div className="appy-btn">
                 {/* <a href="/" target="_blank">
                 Apply
                 </a> */}
+                
                   <button onClick={() => applyforInternship(internship._id.toString())} >
                Apply
            </button>

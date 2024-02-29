@@ -9,13 +9,30 @@ import { faFacebook,  faInstagram, faLinkedin , faSearchengin,faFigma} from "@fo
 import { faCoins, faEnvelope, faFilter, faSearch, fas,faLocationDot , faClock, faBriefcase} from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faFontAwesome, faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
 library.add(fas, faTwitter, faFontAwesome, faFilter,faSearch,faLocationDot,faCoins,faBriefcase)
-
+import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import { InternshipContext } from '../context/internshipcontext';
 {/* <FontAwesomeIcon  icon={faFilter}  classsName="  nine h-12 p-2  "/ >*/}
 
 
 
 
-const exploreCardFull = () => {
+const ExploreCardFull = ({ internship }) => {
+    const router = useRouter();
+  
+    const handleBackToExplore = () => {
+      router.push('/explore');
+    }
+    const { applyforInternship, internshipApplyStatus, setInternshipApplyStatus } = useContext(InternshipContext)
+    useEffect(() => {
+      if (internshipApplyStatus) {
+        const timeoutId = setTimeout(() => {
+          setInternshipApplyStatus(null);
+        }, 2000);
+  
+        return () => clearTimeout(timeoutId);
+      }
+    }, [internshipApplyStatus]);
   return (
 
 
@@ -108,4 +125,4 @@ const exploreCardFull = () => {
   )
 }
 
-export default exploreCardFull
+export default ExploreCardFull
