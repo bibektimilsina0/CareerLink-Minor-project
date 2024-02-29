@@ -94,6 +94,27 @@ const StudentProfile = () => {
             )}
           </div> */}
 
+          <div>
+              
+              {profileData.socialmedia && (
+                <p>
+                  <strong>Social Media:</strong>
+                  <ul>
+                    {profileData.socialmedia.map((social, index) => (
+                      <li key={index}>
+                        {social.type}: <a href={social.link}>{social.link}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </p>
+              )}
+            </div>
+
+
+
+
+          
+
           {/* </div> */}
 
           <div className="mt-4 mb-2 ">

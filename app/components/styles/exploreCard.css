@@ -6,10 +6,10 @@
   } 
   
   .internship-card{
-    margin: 20px auto;
+    margin: 20px 60px;
   
     /* width: 200px; */
-    width: 90%;
+    /* max-width: 90%; */
     /* margin: auto; */
     display: flex;
     flex-direction: column;
@@ -54,9 +54,9 @@
     font-size: 1rem;
   }
   
-  .internship-card .middle {
+  /* .internship-card .middle {
     padding: 1rem 0;
-  }
+  } */
   /* .internship-card .middle .internship-responsibility p:nth-child(1),
   .internship-card .middle .internship-qualification p:nth-child(1){
     font-size: 0.9rem;
@@ -81,6 +81,7 @@
   .internship-card .bottom .left {
     display: flex;
     gap: 1rem;
+    flex: 1;
     flex-direction: row;
     align-items: center;
     /* justify-content: center; */
@@ -113,9 +114,10 @@
     justify-content: space-between;
   }
  
-  .middle{
+  /* .middle{
     align-self: self-start;
-  }
+  } */
+  
   .listOfSymbol{
     display: flex;
     flex-direction: row;
@@ -178,7 +180,7 @@
   }
   .internship-bookmark:hover, .appy-btn:hover {
     transition: all 0.2s linear;
-    background-color: #ff74a5;
+    background-color:  #0e7600;
   }
   .internship-bookmark a {
     display: flex;
@@ -205,11 +207,11 @@ background-color: #DCF2F1;
 border-radius: 12px;
 border:solid 1px rgb(32, 32, 80);
 }
-.left{
+/* .left{
 
    width: 600px;
    display: flex;
    flex-direction: column;
-}
+} */
 
 

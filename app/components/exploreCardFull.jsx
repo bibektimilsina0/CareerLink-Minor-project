@@ -1,128 +1,123 @@
-"use client";
-import React from 'react'
-import './styles/exploreCardFull.css';
-
-
+"use client"
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faFacebook,  faInstagram, faLinkedin , faSearchengin,faFigma} from "@fortawesome/free-brands-svg-icons";
-import { faCoins, faEnvelope, faFilter, faSearch, fas,faLocationDot , faClock, faBriefcase} from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faFontAwesome, faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
-library.add(fas, faTwitter, faFontAwesome, faFilter,faSearch,faLocationDot,faCoins,faBriefcase)
+import { faLocationDot, faClock, faCoins, faBriefcase, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { InternshipContext } from '../context/internshipcontext';
-{/* <FontAwesomeIcon  icon={faFilter}  classsName="  nine h-12 p-2  "/ >*/}
-
-
-
 
 const ExploreCardFull = ({ internship }) => {
-    const router = useRouter();
-  
-    const handleBackToExplore = () => {
-      router.push('/explore');
+  const router = useRouter();
+
+  const handleBackToExplore = () => {
+    router.push('/explore');
+  }
+  const { applyforInternship, internshipApplyStatus, setInternshipApplyStatus } = useContext(InternshipContext)
+  useEffect(() => {
+    if (internshipApplyStatus) {
+      const timeoutId = setTimeout(() => {
+        setInternshipApplyStatus(null);
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
     }
-    const { applyforInternship, internshipApplyStatus, setInternshipApplyStatus } = useContext(InternshipContext)
-    useEffect(() => {
-      if (internshipApplyStatus) {
-        const timeoutId = setTimeout(() => {
-          setInternshipApplyStatus(null);
-        }, 2000);
-  
-        return () => clearTimeout(timeoutId);
-      }
-    }, [internshipApplyStatus]);
+  }, [internshipApplyStatus]);
+
   return (
+    <div className='flex flex-col  justify-center items-center'>
+      <div className='flex flex-col  justify-center items-center border border-gray-200 rounded p-10 mt-4 w-[70%]'>
+        <div className='flex flex-col justify-center items-center '>
+          <div className='mb-4 flex flex-col justify-center items-center'>
+            <img className="w-56 h-56 rounded-full" src={internship.companyLogo?.secure_url} alt='Company Logo' />
+          </div>
+          <div className='text-3xl font-bold mt-1'>{internship.companyName}</div>
+          <div className="grid grid-cols-5 gap-2  w-[100%] mt-12 ">
+
+            <div className='grid grid-cols-5 grid-rows-4'>
+              <div className="row-start-1 col-start-2 row-span-2 ">
+              <FontAwesomeIcon icon={faLocationDot} size="2x" className="text-green-500 mr-2" /></div>
+               <div className="font-semibold row-start-1 col-start-3 col-span-2">Location</div>
+              <div className="row-start-2 col-start-3 col-span-2">{internship.location}</div>
+            </div>
+
+            <div className='grid grid-cols-5 grid-rows-4'>
+            <div className="row-start-1 col-start-2 row-span-2 ">
+              <FontAwesomeIcon icon={faClock} size="2x"  className="text-green-500 mr-2" /></div>
+              <div className="font-semibold row-start-1 col-start-3 col-span-2">Time</div>
+              <div className="row-start-2 col-start-3 col-span-2">{internship.workTime}</div>
+            </div>
+
+           <div className='grid grid-cols-5 grid-rows-4'>
+           <div className="row-start-1 col-start-2 row-span-2 ">
+              <FontAwesomeIcon icon={faBriefcase} className="text-green-500 mr-2" size="2x" /></div>
+              <div className="font-semibold row-start-1 col-start-3 col-span-2">Position</div>
+              <div className="row-start-2 col-start-3 col-span-2">{internship.position}</div>
+            </div>
+            <div className='grid grid-cols-5 grid-rows-4'>
+            <div className="row-start-1 col-start-2 row-span-2 ">
+              <FontAwesomeIcon icon={faUser} size="2x" className="text-green-500 mr-2" /></div>
+              <div className="font-semibold row-start-1 col-start-3 col-span-2">Openings</div>
+              <div className="row-start-2 col-start-3 col-span-2">{internship.noofVacancy}</div>
+            </div>
+
+            <div className='grid grid-cols-5 grid-rows-3'>
+            <div className="row-start-1 col-start-2 row-span-2 ">
+              <FontAwesomeIcon icon={faCoins} size="2x"  className="text-green-500 mr-2" /></div>
+              <div className="font-semibold row-start-1 col-start-3 col-span-2">Salary(pm)</div>
+              <div className="row-start-2 col-start-3 col-span-2">${internship.salary} </div>
+            </div>
+          </div>
+        </div>
 
 
-    <div className='CF_main'>
-        <button className="button1">Back to explore</button>
-     <div className='CF_aCard'>
-     <div className='CF_left'>
-     <div className='CF_Clogo '>
-     <img className="CF_CF_Alogo " src="collaboration.jpg" height="100px" width="100px" alt='clogo'/></div>
-     <div className='CF_cname'>Yasmini Private Limited</div>
-
-     <div className="listOfSymbol">                                                     
-        <div className='onesymbol'>
-            <div> <FontAwesomeIcon icon={faLocationDot}  height="45px" width="45px" className=" CF_CF_Alogo " />
-            {/* <img className="CF_Alogo " src="collaboration.jpg" height="45px" width="45px" alt='comlogo'/> */}
-            </div>
-            <div>
-                <div className="sTitle">location</div>
-                <div className="sValue">pokhara</div>
-            </div>
+        <div className='mt-10 w-[100%]'>
+          <div className='m-10'>
+            <h4 className="text-2xl font-bold text-black">Job Description</h4>
+            <p className='flex items-start'>{internship.description}</p>
+          </div>
+          <div className='m-10'>
+            <h4 className="text-2xl font-bold text-black">Responsibilities of Candidates</h4>
+            <ul className="list-disc list-inside">
+              <li>{internship.responsibilities}</li>
+            </ul>
+          </div>
+          <div className='m-10'>
+            <h4 className="text-2xl font-bold text-black">Requirements</h4>
+            <ul className="list-disc list-inside">
+              <li>{internship.requirements}</li>
+            </ul>
+          </div>
+          <div className="internship-skills m-10">
+            {internship.skillsRequired && internship.skillsRequired.length > 0 && (
+              <>
+                <p className="font-semibold text-2xl">Skills Required:</p>
+                <ul className="list-disc pl-4">
+                  {/* Iterate over skills required and display them */}
+                  {internship.skillsRequired.map((skill, index) => (
+                    <li key={index}>{skill}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+          <div className='flex justify-end'>
+            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mx-4"  onClick={() => applyforInternship(internship._id.toString())}>Apply Now</button>
+            <button onClick={handleBackToExplore} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center mx-4">
+              <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
+              Back to Explore
+            </button>
+          </div>
         </div>
-        <div className='onesymbol'>
-            <div>
-            <FontAwesomeIcon icon={faClock}  height="45px" width="45px" className=" CF_Alogo " />
-            </div>
-            <div>
-                <div className="sTitle">time</div>
-                <div className="sValue">10-4</div>
-            </div>
+      </div>
+      {internshipApplyStatus && (
+        <div style={overlayStyle}>
+          <div style={messageBoxStyle}>
+            {internshipApplyStatus}
+          </div>
         </div>
-        <div className='onesymbol'>
-            <div>
-            <FontAwesomeIcon icon={faBriefcase}  height="45px" width="45px" className=" CF_Alogo " />
-            </div>
-            <div>
-                <div className="sTitle">position</div>
-                <div className="sValue">junior developer</div>
-            </div>
-        </div>
-        <div className='onesymbol'>
-            <div className=" CF_Alogo " > 
-                <FontAwesomeIcon icon={faCoins} size="6xs" className=" CF_Alogo " />
-            </div>
-            <div>
-                <div className="sTitle">salary</div>
-                <div className="sValue">$100 per week</div>
-            </div>
-        </div>
-       
-
-     </div>
-     <div className='aboutCompany'><h3>About company</h3>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est necessitatibus
-         laudantium impedit odit delectus earum facilis eligendi nostrum dolor? Cupiditate quos officia nisi
-          doloremque dolorem, sint, accusantium alias quam aliquid itaque tempore unde quas eos, expedita eveniet 
-          eaque. Officia aspernatur soluta quia non maiores eum. Voluptates, blanditiis? Inventore, reprehenderit voluptates.</div>
-     
-     </div>
-     <div className='right '>
-        <div className='description'>
-            <h4>Job Description</h4>
-            <p>
-                hh ddhhd dhhd hdh dh hdh dh hd hdkskhs hhs hsj shs fhskfhsf  skhsf shkd sfhg sdfh sdfgh  hs
-                sjsdjfh shsdf hsdfkhskdf dhkdss kshs sjhksjfh skhsh shshf shsfgh sdfghsdg fhsghsg 
-            </p>               
-        </div>
-        <div><h4>Responsibilities of Candidates</h4>
-        <ul >
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-        </ul></div>
-        <div>
-            <h4>Requirements</h4>
-            <ul >
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-            </ul></div>
-            <div >  
-                <button className="button2">Apply Now</button>
-                </div>
-           
-             </div></div>
-            
-     </div>
-   
-  )
+      )}
+    </div>
+  );
 }
 
-export default ExploreCardFull
+export default ExploreCardFull;

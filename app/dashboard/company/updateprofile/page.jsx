@@ -5,6 +5,7 @@
 import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { postReq } from "@/app/hooks/service";
+import { ToastMessage } from "@/app/components/ToastMessage";
 
 const SignupCompany = () => {
   const router = useRouter();
@@ -122,15 +123,14 @@ console.log(formData)
           body:formDataObject
         });
         const data=await response.json()
-        // console.log(data)
-        window.alert(data.msg)
       if (response.ok) {
         // Redirect to a success page or handle success as needed
+        ToastMessage("Success",data.msg)
         router.push('/dashboard');
       } else {
-        console.error(data.error);
+        console.error(data.msg);
         // Handle the error, show an alert, or redirect to an error page
-        window.alert(data.msg);
+       ToastMessage("Warning",data.msg)
       }
     } catch (error) {
       console.error('Error:', error);
@@ -138,20 +138,20 @@ console.log(formData)
   };
 
   return (
-    <div className="body">
-      <div className="split-screen">
-        <div className="right">
-          <form onSubmit={handleSubmit}>
+    <div className="  mt-10 text-2xl m-10 px-20 py-8 shadow-2xl border-solid ">
+    
+        <div className="font-bold text-4xl flex justify-center items-center mb-20">Update Profile</div>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           
             
-          <div className="input-container company-info-category">
-              <label htmlFor="companyInfo.category">Company Category</label>
+          <div className="h-14 flex items-center">
+              <label htmlFor="companyInfo.category" className="font-bold mr-7 w-72">Company Category</label>
               <select
                 id="companyInfo.category"
                 name="companyInfo.category"
                 value={formData.companyInfo.category}
                 onChange={handleChange}
-                className="companyInfo.category"
+                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
               >
                 {engineeringCategories.map((category) => (
                   <option key={category} value={category}>
@@ -161,14 +161,14 @@ console.log(formData)
               </select>
             </div>
 
-            <div className="input-container company-info-industry">
-              <label htmlFor="companyInfo.industrySectors">Industry Sectors</label>
+            <div className="h-14 flex items-center">
+              <label htmlFor="companyInfo.industrySectors" className="font-bold mr-7 w-72">Industry Sectors</label>
               <select
                 id="companyInfo.industrySectors"
                 name="companyInfo.industrySectors"
                 value={formData.companyInfo.industrySectors}
                 onChange={handleChange}
-                className="companyInfo.industrySectors"
+                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
               >
                 {industrySectors.map((industry) => (
                   <option key={industry} value={industry}>
@@ -178,113 +178,113 @@ console.log(formData)
               </select>
             </div>
 
-            <div className="input-container city">
-              <label htmlFor="city">City</label>
+            <div className="h-14 flex items-center">
+              <label htmlFor="city" className="font-bold mr-7 w-72">City</label>
               <input
                 type="text"
                 id="city"
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className="city"
-                placeholder="pokhara"
+                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
+                placeholder="Pokhara"
               />
             </div>
 
-            <div className="input-container state">
-              <label htmlFor="state">State</label>
+            <div className="h-14 flex items-center">
+              <label htmlFor="state" className="font-bold mr-7 w-72">State</label>
               <input
                 type="text"
                 id="state"
                 name="state"
                 value={formData.state}
                 onChange={handleChange}
-                className="state"
+                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
                 placeholder="gandaki"
               />
             </div>
 
-            <div className="input-container zip-code">
-              <label htmlFor="zipCode">Zip Code</label>
+            <div className="h-14 flex items-center">
+              <label htmlFor="zipCode" className="font-bold mr-7 w-72">Zip Code</label>
               <input
                 type="text"
                 id="zipCode"
                 name="zipCode"
                 value={formData.zipCode}
                 onChange={handleChange}
-                className="zipCode"
+                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
                 placeholder="112"
               />
             </div>
 
-            <div className="input-container found-year">
-              <label htmlFor="foundYear">Found Year</label>
+            <div className="h-14 flex items-center">
+              <label htmlFor="foundYear" className="font-bold mr-7 w-72">Found Year</label>
               <input
                 type="number"
                 id="foundYear"
                 name="foundYear"
                 value={formData.foundYear}
                 onChange={handleChange}
-                className="foundYear"
+                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
                 placeholder="2000"
               />
             </div>
 
-            <div className="input-container phone">
-              <label htmlFor="phoneNO">Phone Number</label>
+            <div className="h-14 flex items-center">
+              <label htmlFor="phoneNO" className="font-bold mr-7 w-72">Phone Number</label>
               <input
                 type="tel"
                 id="phoneNO"
                 name="phoneNO"
                 value={formData.phoneNO}
                 onChange={handleChange}
-                className="phoneNO"
+                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
                 placeholder="+061-123456"
                 pattern="+[0-9]-[0-9]{6}"
               />
             </div>
 
-            <div className="input-container description">
-              <label htmlFor="companyDescription">Company Description</label>
+            <div className="h-14 m-2 flex items-center">
+              <label htmlFor="companyDescription" className="font-bold mr-7 w-72">Company Description</label>
               <textarea
                 id="companyDescription"
                 name="companyDescription"
                 value={formData.companyDescription}
                 onChange={handleChange}
-                className="companyDescription"
+                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
                 placeholder="Words to describe the company..."
               ></textarea>
             </div>
 
-            <div className="input-container logo">
-              <label htmlFor="logo">Company Logo</label>
+            <div className="h-14 m-2 flex items-center">
+              <label htmlFor="logo" className="font-bold mr-7 w-72">Company Logo</label>
               <input
                 type="file"
                 id="logo"
                 name="logo"
                 onChange={handleFileChange}
-                className="logo"
+                className="flex-1 text-2xl p-2  shadow-lg"
               />
             </div>
 
-            <div className="input-container registration-file">
-              <label htmlFor="registrationFile">Registration File</label>
+            <div className="h-14 m- 2 flex items-center">
+              <label htmlFor="registrationFile" className="font-bold mr-7 w-72">Registration File</label>
               <input
                 type="file"
                 id="registrationFile"
                 name="registrationFile"
                 onChange={handleFileChange}
-                className="registrationFile"
+                className="flex-1 text-2xl p-2  shadow-lg "
               />
             </div>
 
-            <button className="signup-btn" type="submit">
+            <button className=" mt-10 w-full text-2xl block bg-blue-500 text-white p-2 rounded transition:1s hover:bg-pink-400 hover:-translate-y-1 hover:scale-110 duration-500
+      " type="submit">
               Update Profile
             </button>
           </form>
         </div>
-      </div>
-    </div>
+    
   );
 };
 

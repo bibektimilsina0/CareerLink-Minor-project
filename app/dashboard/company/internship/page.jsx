@@ -18,7 +18,7 @@ function MyInternship() {
         <>
             <div>Running Internships</div>
             {runningInternships && runningInternships.map((internship) => (
-                <div className="border border-blue-900" key={internship._id}>
+                <div className="border border-blue-900 mx-8" key={internship._id}>
                     <Card internship={internship} />
                     <div className="flex justify-center space-x-4">
                         <button className="bg-green-500 text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-blue active:bg-green-600">
