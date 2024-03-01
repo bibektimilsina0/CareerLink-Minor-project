@@ -11,10 +11,8 @@ const SignupCompany = () => {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
-    companyInfo: {
-      category: "Civil Engineering",
-      industrySectors: "Construction and Infrastructure"
-    },
+    category: "",
+    industrySectors: "",
     city: "",
     state: "",
     zipCode: "",
@@ -54,7 +52,6 @@ const industrySectors = [
     "Environmental Services, Sustainability",
     "Technology, Information Technology (IT), Software Development",
     "Healthcare, Biotechnology, Medical Devices",
-    "Construction and Infrastructure",
     "Mining, Resources",
     "Manufacturing",
     "Technology, Robotics, Automation",
@@ -97,10 +94,6 @@ console.log(formData)
             // Flatten the nested structure
             const flattenedFormData = {
               ...formData,
-              companyInfo: {
-                category: formData.companyInfo.category,
-                industrySectors: formData.companyInfo.industrySectors,
-              },
             };
           
             // Append each key-value pair to FormData
@@ -117,6 +110,7 @@ console.log(formData)
             return formDataObject;
           };
           const formDataObject = convertToFormData();
+          console.log(formDataObject)
          try {
         const response = await fetch('/api/company/updateprofile',{
           method:'PATCH',
@@ -125,8 +119,8 @@ console.log(formData)
         const data=await response.json()
       if (response.ok) {
         // Redirect to a success page or handle success as needed
-        ToastMessage("Success",data.msg)
         router.push('/dashboard');
+        ToastMessage("Success",data.msg)
       } else {
         console.error(data.msg);
         // Handle the error, show an alert, or redirect to an error page
@@ -147,11 +141,11 @@ console.log(formData)
           <div className="h-14 flex items-center">
               <label htmlFor="companyInfo.category" className="font-bold mr-7 w-72">Company Category</label>
               <select
-                id="companyInfo.category"
-                name="companyInfo.category"
-                value={formData.companyInfo.category}
+                id="category"
+                name="category"
+                value={formData.category}
                 onChange={handleChange}
-                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
+                className="category"
               >
                 {engineeringCategories.map((category) => (
                   <option key={category} value={category}>
@@ -161,14 +155,14 @@ console.log(formData)
               </select>
             </div>
 
-            <div className="h-14 flex items-center">
-              <label htmlFor="companyInfo.industrySectors" className="font-bold mr-7 w-72">Industry Sectors</label>
+            <div className="input-container company-info-industry">
+              <label htmlFor="industrySectors">Industry Sectors</label>
               <select
-                id="companyInfo.industrySectors"
-                name="companyInfo.industrySectors"
-                value={formData.companyInfo.industrySectors}
+                id="industrySectors"
+                name="industrySectors"
+                value={formData.industrySectors}
                 onChange={handleChange}
-                className="flex-1 text-2xl p-2  shadow-lg hover:text-green-400"
+                className="industrySectors"
               >
                 {industrySectors.map((industry) => (
                   <option key={industry} value={industry}>
