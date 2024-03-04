@@ -52,7 +52,7 @@ else{
  
   return (
     <div className="container mx-auto w-full">
-      <div className='text-4xl text-center  justify-center text-[#108A00]'> Create internship opportunity</div>
+      <div className='text-4xl text-center font-mono  justify-center text-black-400'> Create internship opportunity</div>
       <form onSubmit={handleSubmit} className="mt-8 space-y-6">
         <div className='w-1/2'>
           <label htmlFor="position" className=" text-sm font-medium text-gray-700">
@@ -230,7 +230,7 @@ else{
         </div>
 
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">
+        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded-md">
           Create Internship
         </button>
       </form>

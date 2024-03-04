@@ -13,8 +13,8 @@ export const AuthContextProvider = ({ children }) => {
   console.log(user)
   const adminsession = Cookies.get('admin')
   const companysession = Cookies.get('company')
-
   const logoutUser = useCallback(async () => {
+    const router= useRouter()
     if (session && session?.user) {
         signOut()   
         setUser(null)
@@ -33,7 +33,6 @@ export const AuthContextProvider = ({ children }) => {
      }else{
       ToastMessage("Error",response.msg)
      }
-    const router= useRouter()
     router.push("/")
     }
   }, [session]);
