@@ -163,10 +163,10 @@ setIsApplied(appliedInternships&&appliedInternships.some(applied => applied._id 
               </p>
         </div> */}
         <div className="internship-qualification">
-          <p className="mx-[700px] text-lg font-semibold">
-            Required Qualifications :{" "}
+          <p className=" text-lg font-semibold text-center">
+            Required Qualifications :
           </p>
-          <p>
+          <p className="q">
             {/* {internship.qualifications} */}
             {internship.requirements}
           </p>

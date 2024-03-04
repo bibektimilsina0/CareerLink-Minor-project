@@ -16,11 +16,6 @@ const adminLoggedOutClientRoutes = [
     '/admin/login',
     '/admin/register'
 ]
-const studentLoggedInClientRoutes=[
-    '/dashboard',
-    '/dashboard/student/updateprofile',
-    '/dashboard/student/application'
-]
 
 const adminLoggedInAPIRoutes = [
     '/api/admin/new/accept',
@@ -30,6 +25,8 @@ const adminLoggedInAPIRoutes = [
     '/api/admin/pendinginternships',
     '/api/admin/changepassword',
     '/api/admin/sendverificationlink',
+    '/api/admin/allinformations',
+    '/api/admin/getprofile'
 ];
 
 const adminLoggedOutAPIRoutes = [
@@ -37,7 +34,7 @@ const adminLoggedOutAPIRoutes = [
     '/api/admin/login',
     '/api/admin/register',
     '/api/admin/resetpassword',
-    '/api/admin/verifyemail',
+    // '/api/admin/verifyemail', this route can be used in both case when logged out or not
 ];
 
 const companyLoggedInAPIRoutes = [
@@ -47,6 +44,7 @@ const companyLoggedInAPIRoutes = [
     '/api/company/sendverificationlink',
     '/api/company/updateprofile',
     '/api/company/changepassword',
+    '/api/company/getprofile'
     // email verification needed for this
 ];
 
@@ -55,7 +53,7 @@ const companyLoggedOutAPIRoutes = [
     '/api/company/login',
     '/api/company/register',
     '/api/company/resetpassword',
-    '/api/company/verifyemail'
+    // '/api/company/verifyemail' this route can be used in both case when logged out or not
 ];
 
 
@@ -63,13 +61,7 @@ const companyLoggedInClientRoutes = [
     '/dashboard',
     '/dashboard/company/createinternship',
     '/dashboard/company/internship',
-    '/dashboard/company/updateprofile',
-
-]
-const companyandstudentCommonloggedInClientRoutes=[
-    '/dashboard/components/profile',
-    '/dashboard/components/overview',
-    '/dashboard/components/settings',
+    '/dashboard/company/updateprofile'
 
 ]
 // remaining for handling student route
@@ -92,6 +84,4 @@ export {
     companyLoggedInClientRoutes,
     companyLoggedOutAPIRoutes,
     studentLoggedInAPIRoutes,
-    studentLoggedInClientRoutes,
-    companyandstudentCommonloggedInClientRoutes
 }

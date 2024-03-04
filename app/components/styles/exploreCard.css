@@ -68,6 +68,10 @@
     line-height: 1.2;
   
   } */
+  .internship-qualification p.q{
+    width: 100%;
+    word-wrap: break-word;
+  }
   
   
   

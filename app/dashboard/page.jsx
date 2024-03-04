@@ -35,7 +35,7 @@ if(!response.ok){
   </div>
   ) : user.company ? (
     <div>
-{!user.company?.isEmailVerified ? (
+{!user.company?.verified ? (
   <>
     {/* {ToastMessage("Warning", "Please verify your email to create an internship.")} */}
     <div className="bg-yellow-100 border border-yellow-300 text-yellow-900 px-4 py-3 rounded relative mt-4 flex items-center justify-between" role="alert">

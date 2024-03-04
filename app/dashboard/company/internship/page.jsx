@@ -22,14 +22,17 @@ function MyInternship() {
 
   return (
     <>
-      <div className="text-4xl mt-4 text-mono ml-8">Running Internships</div>
+      <div className="text-4xl mt-4 text-mono ml-8 ">Running Internships</div>
       {runningInternships ?(
         runningInternships.map((internship) => (
-          <div className="" key={internship._id}>
+          <div className=" border bg-[#fff]" key={internship._id}>
             <Card internship={internship} />
-            <div className="flex justify-center space-x-4">
+            <div className="flex justify-center space-x-4 w-full overflow-auto ">
               <button className="bg-green-500 text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-blue active:bg-green-600">
                 Update
+              </button>
+              <button className="bg-red-500 text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-blue active:bg-green-600">
+                Delete
               </button>
               <button
                 onClick={(e) => handleSeeApplicants(e, internship._id)}
