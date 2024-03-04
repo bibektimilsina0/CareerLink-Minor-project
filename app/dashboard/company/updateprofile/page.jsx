@@ -1,9 +1,8 @@
-
-'use client'
+"use client";
 // pages/signupCompany.js
 
 import React, { useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { postReq } from "@/app/hooks/service";
 import { ToastMessage } from "@/app/components/ToastMessage";
 
@@ -19,9 +18,8 @@ const SignupCompany = () => {
     foundYear: 2000,
     companyDescription: "",
     phoneNO: "9808766678",
-    logo:null,
-    registrationFile:null
-
+    logo: null,
+    registrationFile: null,
   });
   const engineeringCategories = [
     "Civil Engineering",
@@ -40,10 +38,10 @@ const SignupCompany = () => {
     "Telecommunications Engineering",
     "Transportation Engineering",
     "Water Resources Engineering",
-    "Nuclear Engineering"
-];
+    "Nuclear Engineering",
+  ];
 
-const industrySectors = [
+  const industrySectors = [
     "Construction and Infrastructure",
     "Manufacturing, Automotive, Mechanical Systems",
     "Electronics, Telecommunications, Power",
@@ -59,75 +57,75 @@ const industrySectors = [
     "Telecommunications, Technology",
     "Transportation, Logistics, Urban Planning",
     "Water Management, Environmental Services",
-    "Energy, Nuclear Energy"
-];
-const handleChange = (event) => {
+    "Energy, Nuclear Energy",
+  ];
+  const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name.includes('.')) {
-      const [mainKey, nestedKey] = name.split('.');
+    if (name.includes(".")) {
+      const [mainKey, nestedKey] = name.split(".");
       setFormData({
         ...formData,
         [mainKey]: {
           ...formData[mainKey],
-          [nestedKey]: value
-        }
+          [nestedKey]: value,
+        },
       });
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
 
-
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setFormData({...formData,[event.target.name]:file})
+    setFormData({ ...formData, [event.target.name]: file });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-console.log(formData)
+    console.log(formData);
     // try {
-        const convertToFormData = () => {
-            const formDataObject = new FormData();
-          
-            // Flatten the nested structure
-            const flattenedFormData = {
-              ...formData,
-            };
-          
-            // Append each key-value pair to FormData
-            for (const [key, value] of Object.entries(flattenedFormData)) {
-              // If it's a file, append it to FormData
-              if (value instanceof File) {
-                formDataObject.append(key, value);
-              } else {
-                // If it's not a file, convert non-string values to strings before appending
-                formDataObject.append(key, typeof value !== 'string' ? String(value) : value);
-              }
-            }
-          
-            return formDataObject;
-          };
-          const formDataObject = convertToFormData();
-          console.log(formDataObject)
-         try {
-        const response = await fetch('/api/company/updateprofile',{
-          method:'PATCH',
-          body:formDataObject
-        });
-        const data=await response.json()
+    const convertToFormData = () => {
+      const formDataObject = new FormData();
+
+      // Flatten the nested structure
+      const flattenedFormData = {
+        ...formData,
+      };
+
+      // Append each key-value pair to FormData
+      for (const [key, value] of Object.entries(flattenedFormData)) {
+        // If it's a file, append it to FormData
+        if (value instanceof File) {
+          formDataObject.append(key, value);
+        } else {
+          // If it's not a file, convert non-string values to strings before appending
+          formDataObject.append(key, typeof value !== 'string' ? String(value) : value);
+        }
+      }
+
+      return formDataObject;
+    };
+    const formDataObject = convertToFormData();
+    console.log(formDataObject)
+    try {
+      const response = await fetch('/api/company/updateprofile', {
+        method: 'PATCH',
+        body: formDataObject
+      });
+      const data = await response.json()
       if (response.ok) {
         // Redirect to a success page or handle success as needed
         router.push('/dashboard');
-        ToastMessage("Success",data.msg)
+        ToastMessage("Success", data.msg)
       } else {
         console.error(data.msg);
+        console.error(data.msg);
         // Handle the error, show an alert, or redirect to an error page
-       ToastMessage("Warning",data.msg)
+        ToastMessage("Warning", data.msg)
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 

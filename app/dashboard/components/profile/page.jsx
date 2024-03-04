@@ -1,7 +1,7 @@
 'use client'
 import React, { useContext } from 'react';
 import { AuthContext } from '@/app/context/authcontext';
-import StudentProfile from '../../student/StudentProfile';
+import StudentProfile from '../../student/StudnetProfile';
 import CompanyProfile from '../../company/CompanyProfile';
 
 const Profile = () => {
@@ -10,9 +10,9 @@ const Profile = () => {
   return (
     <>
       {user ? (
-        user.student ? (
+        user?.student ? (
           <StudentProfile />
-        ) : user.company ? (
+        ) : user?.company ? (
           <CompanyProfile />
         ) : (
           <div>Loading data...</div>
