@@ -80,14 +80,14 @@ const Navbar = () => {
       {toggleDropdown && (
         <div className="md:hidden px-4 py-2 w-full">
           <div className="flex flex-col gap-2">
-            <Link href="/explore">
-              <button className="navbutton bg-white rounded-lg px-3 py-1">
-                EXPLORE
-              </button>
-            </Link>
             <Link href="/">
               <button className="navbutton bg-white rounded-lg px-3 py-1">
                 HOME
+              </button>
+            </Link>
+            <Link href="/explore">
+              <button className="navbutton bg-white rounded-lg px-3 py-1">
+                EXPLORE
               </button>
             </Link>
             <Link href={user?.admin ? "/admin/dashboard" : "/dashboard"}>

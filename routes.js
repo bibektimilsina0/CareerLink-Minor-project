@@ -16,6 +16,11 @@ const adminLoggedOutClientRoutes = [
     '/admin/login',
     '/admin/register'
 ]
+const studentLoggedInClientRoutes=[
+    '/dashboard',
+    '/dashboard/student/updateprofile',
+    '/dashboard/student/application'
+]
 
 const adminLoggedInAPIRoutes = [
     '/api/admin/new/accept',
@@ -59,7 +64,12 @@ const companyLoggedInClientRoutes = [
     '/dashboard/company/createinternship',
     '/dashboard/company/internship',
     '/dashboard/company/updateprofile',
-    '/'
+
+]
+const companyandstudentCommonloggedInClientRoutes=[
+    '/dashboard/components/profile',
+    '/dashboard/components/overview',
+    '/dashboard/components/settings',
 
 ]
 // remaining for handling student route
@@ -82,4 +92,6 @@ export {
     companyLoggedInClientRoutes,
     companyLoggedOutAPIRoutes,
     studentLoggedInAPIRoutes,
+    studentLoggedInClientRoutes,
+    companyandstudentCommonloggedInClientRoutes
 }

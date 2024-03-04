@@ -46,7 +46,7 @@ console.log(username,password)
         <div className="makecenter">
           <section className="copy">
             <h1>Welcome Back To</h1>
-            <p>CareerLink</p>
+            {/* <p>CareerLink</p> */}
           </section>
         </div>
       </div>
